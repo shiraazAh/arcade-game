@@ -16,7 +16,21 @@ var Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     this.x = this.x + this.speed * dt;
 
-    if(this.x > 500) { this.x = 0;}
+    if(this.x > 500) { 
+        this.x = 0;
+    }
+
+    const enemy1yDist = Math.abs(player.y - enemy1.y);
+    const enemy1xDist = Math.abs(player.x - enemy1.x);
+    const enemy2yDist = Math.abs(player.y - enemy2.y);
+    const enemy2xDist = Math.abs(player.x - enemy2.x);
+    const enemy3yDist = Math.abs(player.y - enemy3.y);
+    const enemy3xDist = Math.abs(player.x - enemy3.x);
+
+
+    if((enemy1xDist < 30 && enemy1yDist < 40) || (enemy2xDist < 30 && enemy2yDist < 40) || (enemy3xDist < 30 && enemy3yDist < 40)){
+         alert("hit")
+        };
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
