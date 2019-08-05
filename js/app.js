@@ -30,7 +30,10 @@ Enemy.prototype.update = function(dt) {
 
     if((enemy1xDist < 30 && enemy1yDist < 40) || (enemy2xDist < 30 && enemy2yDist < 40) || (enemy3xDist < 30 && enemy3yDist < 40)){
          alert("hit")
+         player.restart();
         };
+
+    player.win();
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -77,7 +80,18 @@ Player.prototype.handleInput = function(allowedKeys){
     if(z === 'down'){
         this.y += 85;  
     }
+}
 
+Player.prototype.restart = function() {
+    this.x = 200;
+    this.y = 400;
+}
+
+Player.prototype.win = function() {
+    if(this.y <= 0){
+        alert("won");
+        this.restart();
+    };
 }
 
 let player = new Player();
