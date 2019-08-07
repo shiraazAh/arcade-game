@@ -3,7 +3,6 @@ body {
 }
 
 div.overlay {
-    display: none;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -16,7 +15,6 @@ div.overlay {
 }
 
 div.player-modal {
-    display: none;
     position: fixed;
     width: 50%;
     height: 20%;

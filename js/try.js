@@ -1,4 +1,5 @@
 var collided = 0;
+const imgs = document.querySelectorAll('.player');
     // Enemies our player must avoid
 
 class Enemy {
@@ -57,7 +58,7 @@ class Player {
         // we've provided one for you to get started
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
-        this.sprite = "images/char-boy.png";
+        this.sprite = 'images/char-boy.png';
         this.x = 200;
         this.y = 400;
     }
@@ -139,3 +140,8 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+imgs.forEach(function(img) {
+    img.addEventListener('click', function() {
+      player.sprite = img.getAttribute('src');
+    });
+  });
