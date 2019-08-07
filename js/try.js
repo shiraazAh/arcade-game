@@ -1,4 +1,4 @@
-const GameController = (function () {
+
     // Enemies our player must avoid
 class Enemy {
     constructor(x, y, speed) {
@@ -13,7 +13,7 @@ class Enemy {
     this.speed = speed;
     }
 
-    update() {
+    update(dt) {
         this.x = this.x + this.speed * dt;
 
         if(this.x > 500) { 
@@ -61,10 +61,11 @@ class Player {
     update() {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers.    
+    // all computers. 
+    win();
     }
 
-    handleInput() {
+    handleInput(allowedKeys) {
         let z = allowedKeys;
 
         if(z === 'up'){
@@ -85,6 +86,18 @@ class Player {
         this.x = 200;
         this.y = 400;
     }
+
+}
+
+var score = 0;
+
+function win() {
+    if(player.y <= 0){
+        score = score + 5;
+        alert("won");
+        console.log(score);
+        player.restart();
+    };
 }
 
 let player = new Player();
@@ -104,6 +117,9 @@ const allEnemies = [enemy1, enemy2, enemy3];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+
+
+
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
@@ -115,4 +131,4 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-})();
+

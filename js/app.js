@@ -32,7 +32,6 @@ Enemy.prototype.update = function(dt) {
          alert("hit")
          player.restart();
         };
-    player.win();
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -59,6 +58,7 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.update = function() {
+    win();
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -88,12 +88,21 @@ Player.prototype.restart = function() {
 
 var score = 0;
 
-Player.prototype.win = function() {
-    if(this.y <= 0){
+// Player.prototype.win = function() {
+//     if(this.y <= 0){
+//         score = score + 5;
+//         alert("won");
+//         console.log(score);
+//         this.restart();
+//     };
+// }
+
+function win() {
+    if(player.y <= 0){
         score = score + 5;
         alert("won");
         console.log(score);
-        this.restart();
+        player.restart();
     };
 }
 
