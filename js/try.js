@@ -1,4 +1,4 @@
-
+var collided = 0;
     // Enemies our player must avoid
 
 class Enemy {
@@ -30,12 +30,19 @@ class Enemy {
     
     
         if((enemy1xDist < 30 && enemy1yDist < 40) || (enemy2xDist < 30 && enemy2yDist < 40) || (enemy3xDist < 30 && enemy3yDist < 40)){
-             alert("hit")
+             alert("Hit")
+             document.querySelector(".lives").getElementsByTagName('li')[0].remove();
+             collided += 1;
              player.restart();
             };
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
+
+        if(collided >= 3) {
+            alert("Lost");
+            document.location.reload();
+        }
     }
 
     render() {
