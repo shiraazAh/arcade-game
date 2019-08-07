@@ -3,6 +3,7 @@ body {
 }
 
 div.overlay {
+    display: none;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -15,6 +16,7 @@ div.overlay {
 }
 
 div.player-modal {
+    display: none;
     position: fixed;
     width: 50%;
     height: 20%;
@@ -39,4 +41,28 @@ h1 {
 
 img {
     margin-top: -40px;
+}
+
+div.score-lives-header{
+    margin: auto;
+    width: 30%;
+    position: relative;
+    top: 70px;
+    height: 50px;
+}
+
+div.lives {
+    position: relative;
+    float: left;
+    top: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+li, div.score, div.score-heading {
+    display: inline-block;
+}
+
+.heart-img {
+    width: 20px;
 }

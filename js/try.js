@@ -1,5 +1,6 @@
 
     // Enemies our player must avoid
+
 class Enemy {
     constructor(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -49,7 +50,7 @@ class Player {
         // we've provided one for you to get started
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
-        this.sprite = 'images/char-boy.png';
+        this.sprite = "images/char-boy.png";
         this.x = 200;
         this.y = 400;
     }
@@ -95,7 +96,7 @@ function win() {
     if(player.y <= 0){
         score = score + 5;
         alert("won");
-        console.log(score);
+        document.querySelector('.score').textContent = score;
         player.restart();
     };
 }
@@ -130,5 +131,4 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
 
