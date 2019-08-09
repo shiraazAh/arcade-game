@@ -81,10 +81,10 @@ class Player {
             this.y -= 85;  
         }
         if(z === 'left'){
-            this.x -= 85;  
+            this.x -= 100;  
         }
         if(z === 'right'){
-            this.x += 85;  
+            this.x += 100;  
         }
         if(z === 'down'){
             this.y += 85;  
@@ -103,9 +103,11 @@ var score = 0;
 function win() {
     if(player.y <= 0){
         score = score + 5;
-        alert("won");
         document.querySelector('.score').textContent = score;
         player.restart();
+        for (enemy of allEnemies){
+            enemy.speed += 20;
+        }
     };
 }
 
@@ -143,5 +145,7 @@ document.addEventListener('keyup', function(e) {
 imgs.forEach(function(img) {
     img.addEventListener('click', function() {
       player.sprite = img.getAttribute('src');
+      document.querySelector('.overlay').classList.add('hide');
+      document.querySelector('.player-modal').classList.add('hide');
     });
   });
