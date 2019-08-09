@@ -64,3 +64,7 @@ li, div.score, div.score-heading {
 .heart-img {
     width: 20px;
 }
+
+/* Class To add */
+
+.hide { display: none;}
