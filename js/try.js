@@ -31,19 +31,18 @@ class Enemy {
     
     
         if((enemy1xDist < 30 && enemy1yDist < 40) || (enemy2xDist < 30 && enemy2yDist < 40) || (enemy3xDist < 30 && enemy3yDist < 40)){
-             alert("Hit")
-             document.querySelector(".lives").getElementsByTagName('li')[0].remove();
+             alert("Hit");
              collided += 1;
+             document.querySelector(".lives").getElementsByTagName('li')[0].remove();
              player.restart();
             };
+
+        if(collided >=3) {
+            gameOver();
+        }
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-
-        if(collided >= 3) {
-            alert("Lost");
-            document.location.reload();
-        }
     }
 
     render() {
@@ -106,7 +105,7 @@ function win() {
         document.querySelector('.score').textContent = score;
         player.restart();
         for (enemy of allEnemies){
-            enemy.speed += 20;
+            enemy.speed += 40;
         }
     };
 }
@@ -117,9 +116,9 @@ let player = new Player();
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy(10, 50, 150);
+var enemy1 = new Enemy(10, 50, 180);
 var enemy2 = new Enemy(100, 200, 300);
-var enemy3 = new Enemy(300, 150, 200);
+var enemy3 = new Enemy(300, 150, 230);
 
 const allEnemies = [enemy1, enemy2, enemy3];
 // Place the player object in a variable called player
@@ -142,6 +141,10 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+document.querySelector('.restart').addEventListener('click', function(){
+    document.location.reload();
+})
+
 imgs.forEach(function(img) {
     img.addEventListener('click', function() {
       player.sprite = img.getAttribute('src');
@@ -149,3 +152,12 @@ imgs.forEach(function(img) {
       document.querySelector('.player-modal').classList.add('hide');
     });
   });
+
+  function gameOver() {
+        document.querySelector('.game-over-score').textContent = score;
+        document.querySelector('.game-over').classList.remove('hide');
+        document.querySelector('.overlay').classList.remove('hide');
+  }
+
+  document.querySelector('.game-over').classList.add('hide');
+
