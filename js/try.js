@@ -1,27 +1,39 @@
-var collided = 0;
-const imgs = document.querySelectorAll('.player');
-    // Enemies our player must avoid
+// Life count variable
+var lives = 3;
 
+// Adding Event Listeners To all the players for player selection 
+const imgs = document.querySelectorAll('.player');
+
+imgs.forEach(function(img) {
+    img.addEventListener('click', function() {
+      // Adding selected player 
+      player.sprite = img.getAttribute('src');
+      // Hide modal overlay and player selection modal after selection
+      document.querySelector('.overlay').classList.add('hide');
+      document.querySelector('.player-modal').classList.add('hide');
+    });
+  });
+
+// Class for Enemies
 class Enemy {
     constructor(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // Enemy Image
     this.sprite = 'images/enemy-bug.png';
+    // Enemy Location
     this.x = x;
     this.y = y;
+    // Enemy Speed
     this.speed = speed;
     }
-
+    // Update function (updated every second)
     update(dt) {
+        //Making enemy move every second
         this.x = this.x + this.speed * dt;
-
+        // When Enemy Finishes one round start again
         if(this.x > 500) { 
             this.x = 0;
         }
-    
+        // Distance Between player and enemies
         const enemy1yDist = Math.abs(player.y - enemy1.y);
         const enemy1xDist = Math.abs(player.x - enemy1.x);
         const enemy2yDist = Math.abs(player.y - enemy2.y);
@@ -29,22 +41,24 @@ class Enemy {
         const enemy3yDist = Math.abs(player.y - enemy3.y);
         const enemy3xDist = Math.abs(player.x - enemy3.x);
     
-    
+        // If enemy and player collides
         if((enemy1xDist < 30 && enemy1yDist < 40) || (enemy2xDist < 30 && enemy2yDist < 40) || (enemy3xDist < 30 && enemy3yDist < 40)){
              alert("Hit");
-             collided += 1;
+             //Decrease life by 1
+             lives -= 1;
+             //Remove a life image
              document.querySelector(".lives").getElementsByTagName('li')[0].remove();
+             //Set player back to intial position
              player.restart();
             };
-
-        if(collided >=3) {
+        
+        // If all lives are over
+        if(lives <= 0) {
+            //Make game over modal appear
             gameOver();
         }
-        // You should multiply any movement by the dt parameter
-        // which will ensure the game runs at the same speed for
-        // all computers.
     }
-
+    // Render Enemies on canvas
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); 
     }
@@ -53,26 +67,22 @@ class Enemy {
 
 class Player {
     constructor() {
-        // Variables applied to each of our instances go here,
-        // we've provided one for you to get started
-        // The image/sprite for our enemies, this uses
-        // a helper we've provided to easily load images
+        // Player Image
         this.sprite = 'images/char-boy.png';
+        // Player Location
         this.x = 200;
         this.y = 400;
     }
-
+    // Render Player on canvas
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); 
     }
-
+    // Update function (updated every second)
     update() {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers. 
+    // On every win
     win();
     }
-
+    // Player movement 
     handleInput(allowedKeys) {
         let z = allowedKeys;
 
@@ -89,7 +99,7 @@ class Player {
             this.y += 85;  
         }
     }
-
+    // Set player to intial location.
     restart() {
         this.x = 200;
         this.y = 400;
@@ -97,33 +107,33 @@ class Player {
 
 }
 
+// Total Score variable
 var score = 0;
 
+// Function to called when player wins one level
 function win() {
     if(player.y <= 0){
+        // Increase Score by 5
         score = score + 5;
+        // Display score above canvas
         document.querySelector('.score').textContent = score;
+        // Set player to intial location
         player.restart();
+        // Increase Enemies speed after each win
         for (enemy of allEnemies){
             enemy.speed += 40;
         }
     };
 }
 
+// Player and Enemy objects created
 let player = new Player();
-// This class requires an update(), render() and
-// a handleInput() method.
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
 var enemy1 = new Enemy(10, 50, 180);
 var enemy2 = new Enemy(100, 200, 300);
 var enemy3 = new Enemy(300, 150, 230);
 
+// Array of enemies
 const allEnemies = [enemy1, enemy2, enemy3];
-// Place the player object in a variable called player
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -141,23 +151,18 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-document.querySelector('.restart').addEventListener('click', function(){
-    document.location.reload();
-})
+// Hide Game Over modal at the start of the game
+document.querySelector('.game-over').classList.add('hide');
 
-imgs.forEach(function(img) {
-    img.addEventListener('click', function() {
-      player.sprite = img.getAttribute('src');
-      document.querySelector('.overlay').classList.add('hide');
-      document.querySelector('.player-modal').classList.add('hide');
-    });
-  });
-
+// Function to show game over modal after bieng called
   function gameOver() {
         document.querySelector('.game-over-score').textContent = score;
         document.querySelector('.game-over').classList.remove('hide');
         document.querySelector('.overlay').classList.remove('hide');
   }
 
-  document.querySelector('.game-over').classList.add('hide');
+// Added Restart Button on Game Over Modal
+document.querySelector('.restart').addEventListener('click', function(){
+    document.location.reload();
+})
 

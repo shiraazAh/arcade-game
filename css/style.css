@@ -2,6 +2,7 @@ body {
     text-align: center;
 }
 
+/* dark Background overlay in the beggening and end */
 div.overlay {
     margin: 0;
     padding: 0;
@@ -14,6 +15,7 @@ div.overlay {
     opacity: 0.8;
 }
 
+/* Player Selection modal */
 div.player-modal {
     position: fixed;
     width: 50%;
@@ -26,6 +28,7 @@ div.player-modal {
     opacity: 1;
 }
 
+/* Game over modal */
 div.game-over {
     position: fixed;
     margin-left: auto;
@@ -39,10 +42,7 @@ div.game-over {
     z-index: 7;
 }
 
-div.canvas {
-    opacity: 0;
-}
-
+/* Headings For All modals and headers */
 h1.choose-player {
     color: White;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -105,6 +105,6 @@ button.restart {
     border-width: 5px;
 }
 
-/* Class To add */
+/* Class To add in Javascript*/
 
 .hide { display: none;}
