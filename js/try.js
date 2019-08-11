@@ -56,7 +56,7 @@ class Player {
         this.sprite = 'images/char-boy.png';
         // Player Location
         this.x = 200;
-        this.y = 400;
+        this.y = 380;
     }
     // Render Player on canvas
     render() {
