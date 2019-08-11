@@ -17,6 +17,7 @@
 
 ## Instructions
 
+* First click the player model you would like to select
 * Use the arrow keys to move the player: up, down, left and right.
 * You have three lives and if you collide with a bug you lose a life and get respawned to the starting position.
 * If you pass across all three bugs:
