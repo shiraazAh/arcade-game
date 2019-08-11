@@ -4,7 +4,7 @@
 ## Table of Contents
 
 - [Instructions](#instructions)
-- [Contributing](#contributing)
+- [Installing](#installing)
 
 ## Installing
 
@@ -19,10 +19,10 @@
 
 * Use the arrow keys to move the player: up, down, left and right.
 * You have three lives and if you collide with a bug you lose a life and get respawned to the starting position.
-* If you pass across all three enemies:
+* If you pass across all three bugs:
     * You earn 5 points.
     * You are reset to starting position with faster bugs
-* If you lose all three lives then its game over and you can restart by clicking the restart button that will appear after you lose.
+* If you lose all three lives, then its game over and you can restart by clicking the restart button that will appear after you lose.
 * Your objective is to score maximum points in the game.
 
 **Have Fun :)**
