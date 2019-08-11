@@ -33,24 +33,9 @@ class Enemy {
         if(this.x > 500) { 
             this.x = 0;
         }
-        // Distance Between player and enemies
-        const enemy1yDist = Math.abs(player.y - enemy1.y);
-        const enemy1xDist = Math.abs(player.x - enemy1.x);
-        const enemy2yDist = Math.abs(player.y - enemy2.y);
-        const enemy2xDist = Math.abs(player.x - enemy2.x);
-        const enemy3yDist = Math.abs(player.y - enemy3.y);
-        const enemy3xDist = Math.abs(player.x - enemy3.x);
-    
-        // If enemy and player collides
-        if((enemy1xDist < 30 && enemy1yDist < 40) || (enemy2xDist < 30 && enemy2yDist < 40) || (enemy3xDist < 30 && enemy3yDist < 40)){
-             alert("Hit");
-             //Decrease life by 1
-             lives -= 1;
-             //Remove a life image
-             document.querySelector(".lives").getElementsByTagName('li')[0].remove();
-             //Set player back to intial position
-             player.restart();
-            };
+        
+        // To check if player collides with enemy and what should happen if collided
+        collision();
         
         // If all lives are over
         if(lives <= 0) {
@@ -79,10 +64,10 @@ class Player {
     }
     // Update function (updated every second)
     update() {
-    // On every win
-    win();
-    // If player goes outside
-    this.outsideCanvas();
+        // On every win
+        win();
+        // If player goes outside
+        this.outsideCanvas();
     }
     // Player movement 
     handleInput(allowedKeys) {
@@ -104,13 +89,13 @@ class Player {
     // Set player to intial location.
     restart() {
         this.x = 200;
-        this.y = 400;
+        this.y = 380;
     }
     
     // To ensure player doesn't go outside the canvas
     outsideCanvas() {
         if(this.y > 400){
-            this.y = 400;
+            this.y = 380;
         }
         if(this.x > 400){
             this.x = 400;
@@ -140,11 +125,33 @@ function win() {
     };
 }
 
+function collision() {
+    // Loop through alll the enemies and calculate distance between player and enemy 
+    for (enemy of allEnemies){
+
+        // y-axis distance
+        var enemyDistanceY = Math.abs(player.y - enemy.y);
+        // x-axis distance
+        var enemyDistanceX = Math.abs(player.x - enemy.x);
+
+        // if player collides
+        if(enemyDistanceX < 55 && enemyDistanceY < 1){
+            alert("Hit");
+            //Decrease life by 1
+            lives -= 1;
+            //Remove a life image
+            document.querySelector(".lives").getElementsByTagName('li')[0].remove();
+            //Set player back to intial position
+            player.restart();
+           };
+    };
+}
+
 // Player and Enemy objects created
 let player = new Player();
 var enemy1 = new Enemy(10, 50, 180);
-var enemy2 = new Enemy(100, 200, 300);
-var enemy3 = new Enemy(300, 150, 230);
+var enemy2 = new Enemy(100, 210, 300);
+var enemy3 = new Enemy(300, 125, 230);
 
 // Array of enemies
 const allEnemies = [enemy1, enemy2, enemy3];
