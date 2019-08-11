@@ -81,6 +81,8 @@ class Player {
     update() {
     // On every win
     win();
+    // If player goes outside
+    this.outsideCanvas();
     }
     // Player movement 
     handleInput(allowedKeys) {
@@ -104,7 +106,19 @@ class Player {
         this.x = 200;
         this.y = 400;
     }
-
+    
+    // To ensure player doesn't go outside the canvas
+    outsideCanvas() {
+        if(this.y > 400){
+            this.y = 400;
+        }
+        if(this.x > 400){
+            this.x = 400;
+        }
+        else if(this.x < 0){
+            this.x = 0;
+        }
+    }
 }
 
 // Total Score variable
