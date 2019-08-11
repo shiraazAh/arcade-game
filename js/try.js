@@ -149,7 +149,7 @@ function collision() {
 
 // Player and Enemy objects created
 let player = new Player();
-var enemy1 = new Enemy(10, 50, 180);
+var enemy1 = new Enemy(10, 40, 180);
 var enemy2 = new Enemy(100, 210, 300);
 var enemy3 = new Enemy(300, 125, 230);
 
