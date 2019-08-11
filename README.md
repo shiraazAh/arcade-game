@@ -1,20 +1,28 @@
 # Classic Arcade Game Clone Project
 
+
 ## Table of Contents
 
 - [Instructions](#instructions)
 - [Contributing](#contributing)
 
+## Installing
+
+1. Clone the following repo:
+    * `git clone git@github.com:shiraazAh/udacity-arcade-game.git`
+
+2. Load index.html in your favourite browser from the cloned file.
+
+3. Play the game.
+
 ## Instructions
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+* Use the arrow keys to move the player: up, down, left and right.
+* You have three lives and if you collide with a bug you lose a life and get respawned to the starting position.
+* If you pass across all three enemies:
+    * You earn 5 points.
+    * You are reset to starting position with faster bugs
+* If you lose all three lives then its game over and you can restart by clicking the restart button that will appear after you lose.
+* Your objective is to score maximum points in the game.
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
-
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+**Have Fun :)**
