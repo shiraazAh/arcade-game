@@ -6,6 +6,8 @@
 - [Instructions](#instructions)
 - [Installing](#installing)
 
+## Play without installing : https://shiraazah.github.io/arcade-game/.
+
 ## Installing
 
 1. Clone the following repo:
